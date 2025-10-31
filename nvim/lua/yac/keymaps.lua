@@ -38,3 +38,25 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
+
+local is_windows = vim.loop.os_uname().version:match("Windows")
+
+if is_windows then
+	vim.keymap.set("n", "<leader>r", function()
+		vim.cmd("!cd .. && compile.bat")
+	end, { desc = "Build and run latest executable" })
+else
+	vim.keymap.set("n", "<leader>r", function()
+		vim.cmd("!cd .. && compile.sh")
+	end, { desc = "Build and run latest executable" })
+end
+
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
