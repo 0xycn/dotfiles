@@ -1,41 +1,16 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.g.have_nerd_font = false
+require("yac.keymaps")
 
-vim.o.number = true
-vim.o.mouse = "a"
+local is_windows = vim.loop.os_uname().version:match("Windows")
 
-vim.o.showmode = false
-
-vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
-end)
-
-vim.o.breakindent = true
-
-vim.o.undofile = true
-vim.o.autochdir = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
-vim.o.signcolumn = "yes"
-
-vim.o.updatetime = 250
-
-vim.o.timeoutlen = 300
-
-vim.o.splitright = true
-vim.o.splitbelow = true
-vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
-vim.o.inccommand = "split"
-
-vim.o.cursorline = true
-
-vim.o.scrolloff = 10
-
-vim.o.confirm = true
+if is_windows then
+	vim.keymap.set("n", "<leader>r", function()
+		vim.cmd("!cd .. && compile.bat")
+	end, { desc = "Build and run latest executable" })
+else
+	vim.keymap.set("n", "<leader>r", function()
+		vim.cmd("!cd .. && compile.sh")
+	end, { desc = "Build and run latest executable" })
+end
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
@@ -190,7 +165,13 @@ require("lazy").setup({
 			end, { desc = "[S]earch [N]eovim files" })
 		end,
 	},
-
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	},
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
@@ -510,6 +491,7 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"hlsl",
 			},
 			auto_install = true,
 			highlight = {
