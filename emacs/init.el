@@ -16,14 +16,16 @@
 (when (< emacs-major-version 27)
   (package-initialize))
 
+(load-theme 'gruber-darker :no-confirm)
+
 (add-hook 'c++-mode-hook 'display-line-numbers-mode)
 (add-hook 'c-mode-hook 'display-line-numbers-mode)
 (setq linum-format "%3d ")
 
 (setq c-default-style "linux")
 (defun my-c-mode-hook ()
-  (setq indent-tabs-mode t)
-  (setq tab-width 4))
+  (setq indent-tabs-mode nil)
+  (setq c-basic-offset 4))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 
 (setq split-width-threshold nil)
@@ -54,4 +56,18 @@
 (dashboard-setup-startup-hook)
 
 (electric-pair-mode t)
-(load-theme 'gruber-darker :no-confirm)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(org-modern org-bulletproof which-key treesit-auto tree-sitter spacemacs-theme solarized-theme org-bullets monokai-theme monokai-pro-theme lsp-ui gruber-darker-theme dracula-theme dashboard dap-mode company catppuccin-theme atom-one-dark-theme atom-dark-theme)))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
