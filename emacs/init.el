@@ -26,7 +26,9 @@
 (defun my-c-mode-hook ()
   (setq indent-tabs-mode nil)
   (setq c-basic-offset 4))
+
 (add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
 
 (setq split-width-threshold nil)
 
