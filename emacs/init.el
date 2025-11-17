@@ -59,17 +59,11 @@
 
 (electric-pair-mode t)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(org-modern org-bulletproof which-key treesit-auto tree-sitter spacemacs-theme solarized-theme org-bullets monokai-theme monokai-pro-theme lsp-ui gruber-darker-theme dracula-theme dashboard dap-mode company catppuccin-theme atom-one-dark-theme atom-dark-theme)))
+(require 'company)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq company-idle-delay 0.1
+      company-minimum-prefix-length 1
+      company-tooltip-align-annotations t)
+
+(global-company-mode 1)
+
