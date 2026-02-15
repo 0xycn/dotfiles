@@ -7,7 +7,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -35,7 +34,6 @@ require("lazy").setup({
 			},
 		},
 	},
-
 	{
 		"folke/which-key.nvim",
 		event = "VimEnter",
@@ -98,7 +96,7 @@ require("lazy").setup({
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 
-			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			{ "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
 		},
 		config = function()
 			require("telescope").setup({
@@ -218,7 +216,7 @@ require("lazy").setup({
 			{ "mason-org/mason.nvim", opts = {} },
 			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{ "j-hui/fidget.nvim", opts = {} },
+			{ "j-hui/fidget.nvim",    opts = {} },
 			"saghen/blink.cmp",
 		},
 		config = function()
@@ -342,7 +340,6 @@ require("lazy").setup({
 			}
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
-				"stylua",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -508,7 +505,6 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
 		opts = {
 			ensure_installed = {
 				"bash",
