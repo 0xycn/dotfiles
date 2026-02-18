@@ -439,7 +439,7 @@ require("lazy").setup({
 			signature = { enabled = true },
 		},
 	},
-
+	{ 'metalelf0/base16-black-metal-scheme' },
 	{
 		"rose-pine/neovim",
 		priority = 1000,
@@ -447,11 +447,11 @@ require("lazy").setup({
 			require("rose-pine").setup({
 				styles = {
 					italic = false,
-					transparency = true,
+					transparency = false,
 				},
 			})
 
-			vim.cmd.colorscheme("rose-pine-moon")
+			vim.cmd.colorscheme("base16-black-metal-immortal")
 		end,
 	},
 
